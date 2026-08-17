@@ -1,0 +1,2541 @@
+<!-- ==========================================
+     FILE: index.html
+     Muhammad Abdullah - Data Analyst Portfolio
+     ========================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Muhammad Abdullah, Data Analyst specializing in SQL, Excel, Python, Power BI, and Data Visualization.">
+  <title>Muhammad Abdullah | Data Analyst Portfolio</title>
+  
+  <!-- Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* ==========================================
+   FILE: css/style.css
+   Muhammad Abdullah - Data Analyst Portfolio
+   ========================================== */
+
+/* --- ROOT VARIABLES --- */
+:root {
+  --bg-dark: #080B11;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --bg-card-hover: rgba(26, 38, 66, 0.85);
+  --bg-nav: rgba(8, 11, 17, 0.85);
+  
+  --primary-cyan: #00F0FF;
+  --primary-blue: #0066FF;
+  --accent-glow: rgba(0, 240, 255, 0.25);
+  --blue-glow: rgba(0, 102, 255, 0.3);
+  
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 240, 255, 0.4);
+  
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- RESET & BASE STYLES --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+/* --- BACKGROUND DECORATION --- */
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.bg-glow-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+}
+
+.bg-glow-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  bottom: 10%;
+  right: -150px;
+}
+
+.bg-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- REUSABLE UTILITIES --- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-active);
+  box-shadow: 0 10px 30px -10px var(--accent-glow);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-subtitle {
+  color: var(--primary-cyan);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.section-title-bar {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-cyan), var(--primary-blue));
+  margin: 12px auto 0;
+  border-radius: var(--radius-full);
+}
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-smooth);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+  color: #000;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-cyan);
+  color: var(--primary-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-xs {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.1rem;
+}
+
+/* --- NAVIGATION --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--bg-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: padding var(--transition-fast);
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo-accent {
+  color: var(--primary-cyan);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-cyan);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-cyan);
+  border-radius: var(--radius-full);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left: Profile Image */
+.hero-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-card {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.profile-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-cyan) 0%, var(--primary-blue) 70%);
+  opacity: 0.35;
+  filter: blur(20px);
+}
+
+.profile-border-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-cyan), transparent, var(--primary-blue));
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+.profile-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--bg-dark);
+  z-index: 1;
+}
+
+/* Right: Hero Content */
+.hero-eyebrow {
+  color: var(--primary-cyan);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 8px 0 16px;
+}
+
+.dynamic-type-container {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.dynamic-type {
+  color: var(--primary-cyan);
+}
+
+.type-cursor {
+  color: var(--primary-cyan);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.glass-pill:hover {
+  border-color: var(--primary-cyan);
+  color: var(--primary-cyan);
+  transform: translateY(-2px);
+}
+
+/* --- STATS COUNTER BAR --- */
+.stats-section {
+  margin-top: -30px;
+  position: relative;
+  z-index: 10;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  padding: 24px;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-cyan);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* --- ABOUT SECTION --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+}
+
+.about-text {
+  padding: 32px;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-skills-box {
+  padding: 32px;
+}
+
+.about-skills-box h3 {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.work-with-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.work-with-list li {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.work-with-list i {
+  color: var(--primary-cyan);
+}
+
+/* --- TOOLS & TECHNOLOGIES --- */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tool-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-cyan);
+  margin-bottom: 20px;
+}
+
+.tool-card h3 {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.tool-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* --- DATA PROCESS SECTION --- */
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-step {
+  padding: 28px;
+  position: relative;
+}
+
+.step-num {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(0, 240, 255, 0.2);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.process-step h3 {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.process-step p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* --- PROJECTS SECTION --- */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.04);
+}
+
+.project-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  background: #020408;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.project-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 11, 17, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.project-img-wrapper:hover .project-img-overlay {
+  opacity: 1;
+}
+
+.project-body {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-sql-banner {
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 240, 255, 0.05));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+  border-right: 1px solid var(--border-color);
+}
+
+.project-sql-banner i {
+  font-size: 3.5rem;
+  color: var(--primary-cyan);
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--primary-cyan);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* --- DASHBOARD SHOWCASE SECTION --- */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.showcase-card {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.showcase-badge {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: var(--primary-blue);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.showcase-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-smooth);
+}
+
+.showcase-card:hover .showcase-img {
+  transform: scale(1.02);
+}
+
+.showcase-footer {
+  margin-top: 16px;
+}
+
+.showcase-footer h4 {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.showcase-footer p {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+/* --- CERTIFICATES SECTION --- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.cert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.cert-img-wrapper:hover .cert-img {
+  transform: scale(1.05);
+}
+
+.cert-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cert-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  color: var(--primary-cyan);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.cert-date {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  margin-bottom: 16px;
+}
+
+.cert-btn-group {
+  margin-top: auto;
+}
+
+/* --- CONTACT SECTION --- */
+.contact-card {
+  padding: 60px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: #fff;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.contact-desc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.contact-item:hover {
+  border-color: var(--primary-cyan);
+  color: var(--primary-cyan);
+  transform: translateY(-2px);
+}
+
+.contact-item i {
+  color: var(--primary-cyan);
+}
+
+/* --- FOOTER --- */
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 30px 0;
+  text-align: center;
+  background: #04060A;
+}
+
+.footer-content p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-subtext {
+  color: var(--text-dim) !important;
+  font-size: 0.8rem !important;
+  margin-top: 6px;
+}
+
+/* --- MODALS & LIGHTBOX --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--primary-cyan);
+  color: #000;
+}
+
+/* Lightbox Content */
+.lightbox-content {
+  text-align: center;
+}
+
+.lightbox-caption {
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.lightbox-img-wrapper img {
+  max-width: 95vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+/* SQL Modal Specifics */
+.sql-modal-container {
+  width: 90%;
+  max-width: 850px;
+  background: #0B0F19;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  align-items: stretch;
+}
+
+.sql-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sql-modal-header h3 {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.sql-code-wrapper {
+  background: #04060A;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  max-height: 50vh;
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: #38BDF8;
+  line-height: 1.5;
+}
+
+.sql-modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Body Scroll Lock */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* --- SCROLL REVEAL ANIMATIONS --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-image-wrapper {
+    order: -1;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group, .hero-badges {
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-img-wrapper {
+    min-height: 240px;
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 75px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 75px);
+    background: var(--bg-dark);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    transition: left 0.3s ease;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+  }
+
+  .contact-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    width: 220px;
+    height: 220px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .dynamic-type-container {
+    font-size: 1.2rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Background Decorative FX -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-accent">&lt;</span>Abdullah<span class="logo-accent">/&gt;</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#tools" class="nav-link">Tools</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        
+        <!-- LEFT COLUMN: Profile Image -->
+        <div class="hero-image-wrapper">
+          <div class="profile-card">
+            <div class="profile-glow"></div>
+            <div class="profile-border-ring"></div>
+            <img src="myimage.jpeg" alt="Muhammad Abdullah" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Text Content -->
+        <div class="hero-content">
+          <span class="hero-eyebrow">HELLO, I'M</span>
+          <h1 class="hero-title">MUHAMMAD ABDULLAH</h1>
+          <div class="dynamic-type-container">
+            <span class="type-prefix">I'M A </span>
+            <span class="dynamic-type" id="dynamic-type"></span><span class="type-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            Turning raw data into meaningful insights, interactive dashboards, and data-driven decisions.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>View My Projects</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="/cv.pdf" class="btn btn-secondary" target="_blank" rel="noopener">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Download Resume</span>
+            </a>
+          </div>
+
+          <!-- Tech Badges -->
+          <div class="hero-badges">
+            <span class="glass-pill"><i class="fa-solid fa-file-excel"></i> Excel</span>
+            <span class="glass-pill"><i class="fa-solid fa-database"></i> SQL</span>
+            <span class="glass-pill"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="glass-pill"><i class="fa-solid fa-chart-column"></i> Power BI</span>
+            <span class="glass-pill"><i class="fa-solid fa-chart-pie"></i> Data Visualization</span>
+            <span class="glass-pill"><i class="fa-solid fa-gauge-high"></i> Dashboard Development</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STATS COUNTER BAR -->
+    <section class="stats-section">
+      <div class="container stats-grid">
+        <div class="stat-card glass-panel" data-reveal>
+          <div class="stat-number" data-target="8">0</div>
+          <div class="stat-label">Certificates</div>
+        </div>
+        <div class="stat-card glass-panel" data-reveal>
+          <div class="stat-number" data-target="2">0</div>
+          <div class="stat-label">Dashboard Projects</div>
+        </div>
+        <div class="stat-card glass-panel" data-reveal>
+          <div class="stat-number" data-target="1">0</div>
+          <div class="stat-label">SQL Analytics Project</div>
+        </div>
+        <div class="stat-card glass-panel" data-reveal>
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Core Analytics Tools</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section section-padding">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-subtitle">BIOGRAPHY</span>
+          <h2 class="section-title">About Me</h2>
+          <div class="section-title-bar"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text glass-panel" data-reveal>
+            <p>
+              I am a dedicated <strong>Data Analyst</strong> passionate about extracting actionable insights from complex datasets. My work bridges raw structured and unstructured data with high-impact business strategy through rigorous analytical workflows, precise query design, and clear reporting.
+            </p>
+            <p>
+              Specializing in <strong>SQL querying, Excel modeling, Python analytics, and interactive dashboard design</strong>, I focus on solving real-world business challenges—from tracking key KPIs and sales drivers to uncovering workforce trends. I pride myself on visual accuracy, statistical discipline, and creating intuitive user experiences for decision-makers.
+            </p>
+          </div>
+
+          <div class="about-skills-box glass-panel" data-reveal>
+            <h3>What I Work With</h3>
+            <ul class="work-with-list">
+              <li><i class="fa-solid fa-circle-check"></i> Microsoft Excel (Advanced Formulas, Pivot Tables, Power Query)</li>
+              <li><i class="fa-solid fa-circle-check"></i> SQL (Joins, CTEs, Aggregations, Window Functions)</li>
+              <li><i class="fa-solid fa-circle-check"></i> Python (Pandas, NumPy, Data Cleaning)</li>
+              <li><i class="fa-solid fa-circle-check"></i> Data Visualization & Storytelling</li>
+              <li><i class="fa-solid fa-circle-check"></i> Dashboard Design & KPI Tracking</li>
+              <li><i class="fa-solid fa-circle-check"></i> Relational Database Concepts & Schema Design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS & TECHNOLOGIES SECTION -->
+    <section id="tools" class="tools-section section-padding">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-subtitle">CAPABILITIES</span>
+          <h2 class="section-title">Tools & Technologies</h2>
+          <div class="section-title-bar"></div>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-file-excel"></i></div>
+            <h3>Microsoft Excel</h3>
+            <p>Data cleaning, formulas, lookup functions, PivotTables, conditional formatting, and dashboard creation.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-database"></i></div>
+            <h3>SQL</h3>
+            <p>Querying, joins, aggregation, subqueries, CTEs, window functions, and analytical SQL for business queries.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-brands fa-python"></i></div>
+            <h3>Python</h3>
+            <p>Data manipulation, exploratory data analysis, automation scripts, and quantitative dataset processing.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <h3>Power BI</h3>
+            <p>Data modeling, DAX measure creation, interactive report visuals, and executive KPI reporting.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <h3>Data Visualization</h3>
+            <p>Designing high-contrast charts, choosing optimal graphical representations, and telling narrative data stories.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <h3>Dashboard Development</h3>
+            <p>Structuring user-friendly, clean metric displays tailored for operational and executive leadership views.</p>
+          </div>
+
+          <div class="tool-card glass-panel" data-reveal>
+            <div class="tool-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Relational Databases</h3>
+            <p>Understanding entity relationships, normalization principles, primary/foreign keys, and data schemas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA PROCESS SECTION -->
+    <section id="process" class="process-section section-padding">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-subtitle">WORKFLOW</span>
+          <h2 class="section-title">How I Approach Data</h2>
+          <div class="section-title-bar"></div>
+        </div>
+
+        <div class="process-timeline">
+          <div class="process-step glass-panel" data-reveal>
+            <span class="step-num">01</span>
+            <h3>Understand</h3>
+            <p>Analyze business objectives, define key metrics, and frame core questions that drive actionable outcomes.</p>
+          </div>
+
+          <div class="process-step glass-panel" data-reveal>
+            <span class="step-num">02</span>
+            <h3>Clean</h3>
+            <p>Prepare, audit, handle missing values, standardize types, and validate underlying dataset integrity.</p>
+          </div>
+
+          <div class="process-step glass-panel" data-reveal>
+            <span class="step-num">03</span>
+            <h3>Analyze</h3>
+            <p>Query relational databases using SQL, perform calculations in Excel/Python, and identify critical patterns.</p>
+          </div>
+
+          <div class="process-step glass-panel" data-reveal>
+            <span class="step-num">04</span>
+            <h3>Visualize</h3>
+            <p>Build intuitive interactive dashboards and deliver structured insights that inform business strategy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="projects-section section-padding">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-subtitle">PORTFOLIO</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-title-bar"></div>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- PROJECT 1: HR Analytics Dashboard -->
+          <div class="project-card glass-panel" data-reveal>
+            <div class="project-img-wrapper">
+              <img src="/projects/HR Analytics Dashboard.png" alt="HR Analytics Dashboard" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'">
+              <div class="project-img-overlay">
+                <button class="btn btn-icon view-img-btn" data-img-src="projects/HR Analytics Dashboard.png" data-title="HR Analytics Dashboard">
+                  <i class="fa-solid fa-expand"></i> Full Screen
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">HR Analytics Dashboard</h3>
+              <p class="project-description">
+                An HR analytics dashboard exploring employee count, attrition, age, education, salary bands, job roles, gender distributions, and working years to improve retention strategies.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Excel</span>
+                <span class="tag">Dashboard</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">HR Analytics</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary view-img-btn" data-img-src="projects/HR Analytics Dashboard.png" data-title="HR Analytics Dashboard">
+                  <i class="fa-solid fa-eye"></i> View Project
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <!-- PROJECT 2: Sales Dashboard -->
+          <div class="project-card glass-panel" data-reveal>
+            <div class="project-img-wrapper">
+              <img src="/projects/Executive & High Level Sale Dashboard.png" alt="Executive & High-Level Sales Dashboard" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'">
+              <div class="project-img-overlay">
+                <button class="btn btn-icon view-img-btn" data-img-src="/projects/Executive & High Level Sale Dashboard.png" data-title="Executive & High-Level Sales Dashboard">
+                  <i class="fa-solid fa-expand"></i> Full Screen
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Executive & High-Level Sales Dashboard</h3>
+              <p class="project-description">
+                An executive sales dashboard covering revenue, profit margins, order volumes, customer segments, payment modes, category breakdowns, and regional shipping performance.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Excel</span>
+                <span class="tag">Sales Analytics</span>
+                <span class="tag">Dashboard</span>
+                <span class="tag">KPIs</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary view-img-btn" data-img-src="/projects/Executive & High Level Sale Dashboard.png" data-title="Executive & High-Level Sales Dashboard">
+                  <i class="fa-solid fa-eye"></i> View Project
+                </button>
+      
+              </div>
+            </div>
+          </div>
+            <div class="project-card glass-panel" data-reveal>
+            <div class="project-img-wrapper">
+              <img src="/projects/Sales Analysis Dashboard.png" alt="Executive & High-Level Sales Dashboard" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'">
+              <div class="project-img-overlay">
+                <button class="btn btn-icon view-img-btn" data-img-src="/projects/Sales Analysis Dashboard.png" data-title="Executive & High-Level Sales Dashboard">
+                  <i class="fa-solid fa-expand"></i> Full Screen
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Excel Super Store Sales Analysis</h3>
+              <p class="project-description">
+                An interactive Excel dashboard analyzing Super Store sales performance, including total sales, profit, orders, product categories, customer segments, payment methods, and regional performance.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Excel</span>
+                <span class="tag">Sales Analytics</span>
+                <span class="tag">Dashboard</span>
+                <span class="tag">KPIs</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary view-img-btn" data-img-src="/projects/Sales Analysis Dashboard.png" data-title="Executive & High-Level Sales Dashboard">
+                  <i class="fa-solid fa-eye"></i> View Project
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 4: Music Store SQL Analysis -->
+          <div class="project-card glass-panel" data-reveal>
+            <div class="project-sql-banner">
+              <i class="fa-solid fa-code"></i>
+              <span>PostgreSQL Project</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Music Store SQL Analysis</h3>
+              <p class="project-description">
+                Comprehensive SQL exploratory data analysis examining customer purchase behavior, track popularity, genre revenue, artist performance, and multi-table business relationships.
+              </p>
+              <div class="project-tags">
+                <span class="tag">SQL</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Joins</span>
+                <span class="tag">CTEs</span>
+                <span class="tag">Window Functions</span>
+                <span class="tag">Data Analysis</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary" id="open-sql-modal-btn">
+                  <i class="fa-solid fa-code"></i> View SQL
+                </button>
+                <a href="/projects/Muhammad_Abdullah_Music_Store_SQL_Queries.sql" download class="btn btn-sm btn-secondary">
+                  <i class="fa-solid fa-download"></i> Download SQL
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  
+
+    <!-- CERTIFICATES SECTION -->
+    <section id="certificates" class="certificates-section section-padding">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-subtitle">VERIFICATION</span>
+          <h2 class="section-title">Certificates & Credentials</h2>
+          <div class="section-title-bar"></div>
+        </div>
+
+        <div class="certificates-grid">
+          
+          <!-- Cert 1 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/sqlf.png" alt="SQL Foundations Certificate" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/sql-foundations.png" data-title="SQL Foundations" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">SQL Foundations</h3>
+              <p class="cert-issuer">Microsoft / Coursera</p>
+              <span class="cert-date">May 6, 2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/SQL FOUNDATION CERTIFICATE.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/intro.png" alt="Introduction to Data Analytics Certificate" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/introduction-to-data-analytics.png" data-title="Introduction to Data Analytics" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Introduction to Data Analytics</h3>
+              <p class="cert-issuer">IBM / Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Introduction to Data_Analytics certificate.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/excelB.png" alt="Excel Basics for Data Analysis Certificate" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/excel-basics-data-analysis.png" data-title="Excel Basics for Data Analysis" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Excel Basics for Data Analysis</h3>
+              <p class="cert-issuer">IBM / Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Excel Basics For Data Analysis.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/datavs.png" alt="Data Visualization and Dashboards with Excel and Cognos" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/data-visualization-excel.png" data-title="Data Visualization and Dashboards with Excel & Cognos" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Data Visualization & Dashboards</h3>
+              <p class="cert-issuer">IBM / Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Data Visualization and Dashboards with Excel.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/Muhammad Abdullah - Python.png" alt="Python Certificate" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/python.png" data-title="Python Programming for Data Science" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Python for Data Science</h3>
+              <p class="cert-issuer">Coursera / Industry</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Muhammad Abdullah - Python.png" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 6 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/Intro_To_Programming.png" alt="Intro to Programming Certificate" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/intro-to-programming.png" data-title="Intro to Programming" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Intro to Programming</h3>
+              <p class="cert-issuer">Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Intro_To_Programming.png" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 7 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/manuplation.png" alt="Data Manipulation and Transactions in SQL Server" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/sql-data-manipulation.png" data-title="Data Manipulation & Transactions in SQL Server" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Data Manipulation in SQL Server</h3>
+              <p class="cert-issuer">Microsoft / Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Sql Data Manipulation.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 8 -->
+          <div class="cert-card glass-panel" data-reveal>
+            <div class="cert-img-wrapper">
+              <img src="/certificates/rel_data_base.png" alt="Relational Database Design and Advanced Querying" class="cert-img cert-lightbox-trigger" data-img-src="assets/certificates/relational-database-advanced-querying.png" data-title="Relational Database Design & Advanced Querying" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Relational Database & Advanced Querying</h3>
+              <p class="cert-issuer">Coursera</p>
+              <span class="cert-date">2026</span>
+              <div class="cert-btn-group">
+                <a href="/certificates/Relational Database design & Advance Querying.pdf" target="_blank" class="btn btn-xs btn-secondary cert-pdf-link"><i class="fa-regular fa-file-pdf"></i> View PDF</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section section-padding">
+      <div class="container">
+        <div class="contact-card glass-panel" data-reveal>
+          <span class="section-subtitle">CONNECT</span>
+          <h2 class="contact-title">Let's Work With Data</h2>
+          <p class="contact-desc">
+            Open to Junior Data Analyst roles, freelance analytics, and collaborative project opportunities.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:your.email@example.com" class="contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>abduljalil3437@gmail.com</span>
+            </a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="contact-item">
+              <i class="fa-brands fa-linkedin"></i>
+              <span>https://www.linkedin.com/in/muhammad-abdullah-025517304</span>
+            </a>
+
+          </div>
+
+          <div class="contact-cta">
+            <a href="Contct:03131468311" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Get In Touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Muhammad Abdullah. All rights reserved.</p>
+      <p class="footer-subtext">Designed for Data Analysis & Decision Intelligence</p>
+    </div>
+  </footer>
+
+  <!-- FULLSCREEN IMAGE LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="image-lightbox" aria-hidden="true" role="dialog">
+    <div class="modal-container">
+      <button class="modal-close" id="lightbox-close-btn" aria-label="Close Lightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="lightbox-content">
+        <h3 id="lightbox-title" class="lightbox-caption">Image Preview</h3>
+        <div class="lightbox-img-wrapper">
+          <img src="" alt="Fullscreen Lightbox Image" id="lightbox-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SQL CODE PREVIEW MODAL -->
+  <div class="modal-overlay" id="sql-modal" aria-hidden="true" role="dialog">
+    <div class="modal-container sql-modal-container">
+      <button class="modal-close" id="sql-close-btn" aria-label="Close SQL Preview">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="sql-modal-header">
+        <i class="fa-solid fa-database logo-accent"></i>
+        <h3>Music Store SQL Analysis - Query Preview</h3>
+      </div>
+      <div class="sql-code-wrapper">
+        <pre><code id="sql-code-block">-- ===================================================
+-- Music Store Exploratory Data Analysis
+-- Author: Muhammad Abdullah
+-- Database: PostgreSQL
+-- ===================================================
+
+-- 1. Top 10 Best Selling Artists by Total Revenue
+WITH ArtistSales AS (
+    SELECT 
+        art.artist_id,
+        art.name AS artist_name,
+        SUM(il.unit_price * il.quantity) AS total_spent
+    FROM invoice_line il
+    JOIN track t ON t.track_id = il.track_id
+    JOIN album alb ON alb.album_id = t.album_id
+    JOIN artist art ON art.artist_id = alb.artist_id
+    GROUP BY art.artist_id, art.name
+)
+SELECT 
+    artist_name,
+    ROUND(total_spent::numeric, 2) AS total_revenue,
+    DENSE_RANK() OVER (ORDER BY total_spent DESC) AS revenue_rank
+FROM ArtistSales
+LIMIT 10;
+
+-- 2. Customer Seniority & Total Lifetime Value (LTV)
+SELECT 
+    c.customer_id,
+    c.first_name || ' ' || c.last_name AS customer_name,
+    c.country,
+    COUNT(DISTINCT i.invoice_id) AS total_orders,
+    SUM(i.total) AS total_lifetime_value,
+    ROUND(AVG(i.total)::numeric, 2) AS avg_order_value
+FROM customer c
+JOIN invoice i ON c.customer_id = i.customer_id
+GROUP BY c.customer_id, customer_name, c.country
+HAVING SUM(i.total) > 100
+ORDER BY total_lifetime_value DESC;
+
+-- 3. Most Popular Genre per Country (Using Window Functions)
+WITH GenreByCountry AS (
+    SELECT 
+        c.country,
+        g.name AS genre_name,
+        COUNT(il.invoice_line_id) AS total_purchases,
+        ROW_NUMBER() OVER(PARTITION BY c.country ORDER BY COUNT(il.invoice_line_id) DESC) AS row_num
+    FROM invoice_line il
+    JOIN invoice i ON i.invoice_id = il.invoice_id
+    JOIN customer c ON c.customer_id = i.customer_id
+    JOIN track t ON t.track_id = il.track_id
+    JOIN genre g ON g.genre_id = t.genre_id
+    GROUP BY c.country, g.name
+)
+SELECT country, genre_name, total_purchases
+FROM GenreByCountry
+WHERE row_num = 1
+ORDER BY total_purchases DESC;</code></pre>
+      </div>
+      <div class="sql-modal-footer">
+        <a href="assets/projects/music-store-sql-analysis.sql" download class="btn btn-primary">
+          <i class="fa-solid fa-download"></i> Download Full SQL File
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script>
+// /* ==========================================
+//    FILE: js/script.js
+//    Muhammad Abdullah - Data Analyst Portfolio
+//    ========================================== */
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   // 1. DYNAMIC TYPING & DELETING ANIMATION
+//   const dynamicTextElement = document.getElementById("dynamic-type");
+//   const phrases = [
+//     "Data Analyst",
+//     "SQL Analyst",
+//     "Dashboard Developer",
+//     "Data Visualization Enthusiast"
+//   ];
+
+//   let phraseIndex = 0;
+//   let charIndex = 0;
+//   let isDeleting = false;
+//   let typingSpeed = 100;
+
+//   function typeEffect() {
+//     const currentPhrase = phrases[phraseIndex];
+
+//     if (isDeleting) {
+//       dynamicTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+//       charIndex--;
+//       typingSpeed = 50;
+//     } else {
+//       dynamicTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+//       charIndex++;
+//       typingSpeed = 100;
+//     }
+
+//     if (!isDeleting && charIndex === currentPhrase.length) {
+//       typingSpeed = 2000; // Pause at end
+//       isDeleting = true;
+//     } else if (isDeleting && charIndex === 0) {
+//       isDeleting = false;
+//       phraseIndex = (phraseIndex + 1) % phrases.length;
+//       typingSpeed = 500; // Pause before typing next phrase
+//     }
+
+//     setTimeout(typeEffect, typingSpeed);
+//   }
+
+//   if (dynamicTextElement) {
+//     typeEffect();
+//   }
+
+//   // 2. MOBILE NAVIGATION HAMBURGER MENU
+//   const hamburger = document.getElementById("hamburger");
+//   const navMenu = document.getElementById("nav-menu");
+//   const navLinks = document.querySelectorAll(".nav-link");
+
+//   if (hamburger && navMenu) {
+//     hamburger.addEventListener("click", () => {
+//       hamburger.classList.toggle("active");
+//       navMenu.classList.toggle("active");
+//     });
+
+//     navLinks.forEach((link) => {
+//       link.addEventListener("click", () => {
+//         hamburger.classList.remove("active");
+//         navMenu.classList.remove("active");
+//       });
+//     });
+//   }
+
+//   // 3. ACTIVE SECTION HIGHLIGHT ON SCROLL
+//   const sections = document.querySelectorAll("section");
+
+//   window.addEventListener("scroll", () => {
+//     let current = "";
+//     const scrollPosition = window.scrollY + 200;
+
+//     sections.forEach((section) => {
+//       const sectionTop = section.offsetTop;
+//       const sectionHeight = section.clientHeight;
+//       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+//         current = section.getAttribute("id");
+//       }
+//     });
+
+//     navLinks.forEach((link) => {
+//       link.classList.remove("active");
+//       if (link.getAttribute("href") === `#${current}`) {
+//         link.classList.add("active");
+//       }
+//     });
+//   });
+
+//   // 4. LIGHTBOX & MODAL SYSTEM
+//   const imageLightbox = document.getElementById("image-lightbox");
+//   const lightboxImg = document.getElementById("lightbox-img");
+//   const lightboxTitle = document.getElementById("lightbox-title");
+//   const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+
+//   const sqlModal = document.getElementById("sql-modal");
+//   const openSqlModalBtn = document.getElementById("open-sql-modal-btn");
+//   const sqlCloseBtn = document.getElementById("sql-close-btn");
+
+//   // Helper function to open modal safely
+//   function openModal(modal) {
+//     modal.classList.add("active");
+//     modal.setAttribute("aria-hidden", "false");
+//     document.body.classList.add("modal-open");
+//   }
+
+//   // Helper function to close modal safely
+//   function closeModal(modal) {
+//     modal.classList.remove("active");
+//     modal.setAttribute("aria-hidden", "true");
+//     document.body.classList.remove("modal-open");
+//   }
+
+//   // Bind Image Lightbox triggers (Projects, Screenshots, Certificates)
+//   const imageTriggers = document.querySelectorAll(".view-img-btn, .cert-lightbox-trigger");
+
+//   imageTriggers.forEach((trigger) => {
+//     trigger.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       const imgSrc = trigger.getAttribute("data-img-src") || trigger.getAttribute("src");
+//       const imgTitle = trigger.getAttribute("data-title") || trigger.getAttribute("alt") || "Image Preview";
+
+//       if (imgSrc && lightboxImg) {
+//         lightboxImg.src = imgSrc;
+//         lightboxTitle.textContent = imgTitle;
+//         openModal(imageLightbox);
+//       }
+//     });
+//   });
+
+//   // Close Lightbox button
+//   if (lightboxCloseBtn) {
+//     lightboxCloseBtn.addEventListener("click", () => closeModal(imageLightbox));
+//   }
+
+//   // Open SQL Modal
+//   if (openSqlModalBtn && sqlModal) {
+//     openSqlModalBtn.addEventListener("click", () => openModal(sqlModal));
+//   }
+
+//   // Close SQL Modal
+//   if (sqlCloseBtn) {
+//     sqlCloseBtn.addEventListener("click", () => closeModal(sqlModal));
+//   }
+
+//   // Click outside modal content to close
+//   [imageLightbox, sqlModal].forEach((modal) => {
+//     if (modal) {
+//       modal.addEventListener("click", (e) => {
+//         if (e.target === modal) {
+//           closeModal(modal);
+//         }
+//       });
+//     }
+//   });
+
+//   // ESC Key listener to close active modals
+//   document.addEventListener("keydown", (e) => {
+//     if (e.key === "Escape") {
+//       if (imageLightbox && imageLightbox.classList.contains("active")) {
+//         closeModal(imageLightbox);
+//       }
+//       if (sqlModal && sqlModal.classList.contains("active")) {
+//         closeModal(sqlModal);
+//       }
+//     }
+//   });
+
+//   // 5. ANIMATED STATS COUNTER
+//   const statNumbers = document.querySelectorAll(".stat-number");
+//   let hasCounted = false;
+
+//   function startCounters() {
+//     statNumbers.forEach((stat) => {
+//       const target = +stat.getAttribute("data-target");
+//       const duration = 1500; // ms
+//       const step = Math.max(1, Math.floor(target / (duration / 16)));
+//       let current = 0;
+
+//       const timer = setInterval(() => {
+//         current += step;
+//         if (current >= target) {
+//           stat.textContent = target < 10 ? `0${target}+` : `${target}+`;
+//           clearInterval(timer);
+//         } else {
+//           stat.textContent = current < 10 ? `0${current}` : `${current}`;
+//         }
+//       }, 16);
+//     });
+//   }
+
+//   // 6. SCROLL REVEAL OBSERVER
+//   const revealElements = document.querySelectorAll("[data-reveal]");
+
+//   const revealObserver = new IntersectionObserver(
+//     (entries, observer) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add("revealed");
+
+//           // Trigger stats counter when stats section is visible
+//           if (entry.target.classList.contains("stat-card") && !hasCounted) {
+//             hasCounted = true;
+//             startCounters();
+//           }
+
+//           observer.unobserve(entry.target);
+//         }
+//       });
+//     },
+//     { threshold: 0.15 }
+//   );
+
+//   revealElements.forEach((element) => revealObserver.observe(element));
+// });
+
+
+
+/* ==========================================
+   FILE: js/script.js
+   Muhammad Abdullah - Data Analyst Portfolio
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ==========================================
+  // 1. DYNAMIC TYPING & DELETING ANIMATION
+  // ==========================================
+
+  const dynamicTextElement = document.getElementById("dynamic-type");
+
+  const phrases = [
+    "Data Analyst",
+    "SQL Analyst",
+    "Dashboard Developer",
+    "Data Visualization Enthusiast"
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+
+  function typeEffect() {
+    if (!dynamicTextElement) return;
+
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      dynamicTextElement.textContent =
+        currentPhrase.substring(0, charIndex - 1);
+
+      charIndex--;
+      typingSpeed = 50;
+    } else {
+      dynamicTextElement.textContent =
+        currentPhrase.substring(0, charIndex + 1);
+
+      charIndex++;
+      typingSpeed = 100;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typingSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typingSpeed);
+  }
+
+  if (dynamicTextElement) {
+    typeEffect();
+  }
+
+
+  // ==========================================
+  // 2. MOBILE NAVIGATION HAMBURGER MENU
+  // ==========================================
+
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  if (hamburger && navMenu) {
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+  }
+
+
+  // ==========================================
+  // 3. ACTIVE SECTION HIGHLIGHT ON SCROLL
+  // ==========================================
+
+  const sections = document.querySelectorAll("section");
+
+  window.addEventListener("scroll", () => {
+
+    let current = "";
+    const scrollPosition = window.scrollY + 200;
+
+    sections.forEach((section) => {
+
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        current = section.getAttribute("id");
+      }
+
+    });
+
+    navLinks.forEach((link) => {
+
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+
+    });
+
+  });
+
+
+  // ==========================================
+  // 4. LIGHTBOX & MODAL SYSTEM
+  // ==========================================
+
+  // Image Lightbox
+  const imageLightbox = document.getElementById("image-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxTitle = document.getElementById("lightbox-title");
+  const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+
+  // SQL Modal
+  const sqlModal = document.getElementById("sql-modal");
+  const openSqlModalBtn = document.getElementById("open-sql-modal-btn");
+  const sqlCloseBtn = document.getElementById("sql-close-btn");
+
+  // SQL code container
+  const sqlCodeElement =
+    document.getElementById("sql-code") ||
+    (sqlModal ? sqlModal.querySelector("pre code") : null) ||
+    (sqlModal ? sqlModal.querySelector("pre") : null);
+
+
+  // ==========================================
+  // 4.1 OPEN MODAL HELPER
+  // ==========================================
+
+  function openModal(modal) {
+
+    if (!modal) return;
+
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("modal-open");
+  }
+
+
+  // ==========================================
+  // 4.2 CLOSE MODAL HELPER
+  // ==========================================
+
+  function closeModal(modal) {
+
+    if (!modal) return;
+
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+  }
+
+
+  // ==========================================
+  // 4.3 IMAGE LIGHTBOX
+  // ==========================================
+
+  const imageTriggers = document.querySelectorAll(
+    ".view-img-btn, .cert-lightbox-trigger"
+  );
+
+  imageTriggers.forEach((trigger) => {
+
+    trigger.addEventListener("click", (e) => {
+
+      e.preventDefault();
+
+      const imgSrc =
+        trigger.getAttribute("data-img-src") ||
+        trigger.getAttribute("src");
+
+      const imgTitle =
+        trigger.getAttribute("data-title") ||
+        trigger.getAttribute("alt") ||
+        "Image Preview";
+
+      if (imgSrc && lightboxImg && imageLightbox) {
+
+        lightboxImg.src = imgSrc;
+
+        if (lightboxTitle) {
+          lightboxTitle.textContent = imgTitle;
+        }
+
+        openModal(imageLightbox);
+      }
+
+    });
+
+  });
+
+
+  // ==========================================
+  // 4.4 CLOSE IMAGE LIGHTBOX
+  // ==========================================
+
+  if (lightboxCloseBtn && imageLightbox) {
+
+    lightboxCloseBtn.addEventListener("click", () => {
+      closeModal(imageLightbox);
+    });
+
+  }
+
+
+  // ==========================================
+  // 4.5 OPEN SQL MODAL
+  // ==========================================
+  //
+  // IMPORTANT:
+  // This loads the actual SQL file:
+  //
+  // /projects/Muhammad_Abdullah_Music_Store_SQL_Queries.sql
+  //
+  // Nothing is hardcoded into the modal.
+  // ==========================================
+
+  if (openSqlModalBtn && sqlModal) {
+
+    openSqlModalBtn.addEventListener("click", async () => {
+
+      // Get file path from button.
+      // If data-sql-file is missing, use the correct file as fallback.
+      const sqlFile =
+        openSqlModalBtn.getAttribute("data-sql-file") ||
+        "/projects/Muhammad_Abdullah_Music_Store_SQL_Queries.sql";
+
+
+      // Make sure the SQL display element exists
+      const codeElement =
+        document.getElementById("sql-code") ||
+        sqlModal.querySelector("pre code") ||
+        sqlModal.querySelector("pre");
+
+
+      if (!codeElement) {
+
+        console.error(
+          "SQL code container not found. Add <code id=\"sql-code\"></code> inside the SQL modal."
+        );
+
+        return;
+      }
+
+
+      // Show loading message
+      codeElement.textContent = "Loading SQL file...";
+
+
+      // Open modal immediately
+      openModal(sqlModal);
+
+
+      try {
+
+        // Fetch the actual SQL file
+        const response = await fetch(sqlFile, {
+          method: "GET",
+          cache: "no-cache"
+        });
+
+
+        // Check if file exists
+        if (!response.ok) {
+
+          throw new Error(
+            `Unable to load SQL file. HTTP status: ${response.status}`
+          );
+
+        }
+
+
+        // Read actual SQL file content
+        const sqlContent = await response.text();
+
+
+        // Display actual SQL file content
+        codeElement.textContent = sqlContent;
+
+
+        console.log(
+          "Successfully loaded SQL file:",
+          sqlFile
+        );
+
+      } catch (error) {
+
+        console.error(
+          "SQL file loading error:",
+          error
+        );
+
+
+        codeElement.textContent =
+          "Unable to load the SQL file.\n\n" +
+          error.message;
+
+      }
+
+    });
+
+  }
+
+
+  // ==========================================
+  // 4.6 CLOSE SQL MODAL
+  // ==========================================
+
+  if (sqlCloseBtn && sqlModal) {
+
+    sqlCloseBtn.addEventListener("click", () => {
+      closeModal(sqlModal);
+    });
+
+  }
+
+
+  // ==========================================
+  // 4.7 CLICK OUTSIDE MODAL TO CLOSE
+  // ==========================================
+
+  [imageLightbox, sqlModal].forEach((modal) => {
+
+    if (!modal) return;
+
+    modal.addEventListener("click", (e) => {
+
+      if (e.target === modal) {
+        closeModal(modal);
+      }
+
+    });
+
+  });
+
+
+  // ==========================================
+  // 4.8 ESCAPE KEY TO CLOSE MODALS
+  // ==========================================
+
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key !== "Escape") return;
+
+
+    if (
+      imageLightbox &&
+      imageLightbox.classList.contains("active")
+    ) {
+      closeModal(imageLightbox);
+    }
+
+
+    if (
+      sqlModal &&
+      sqlModal.classList.contains("active")
+    ) {
+      closeModal(sqlModal);
+    }
+
+  });
+
+
+  // ==========================================
+  // 5. ANIMATED STATS COUNTER
+  // ==========================================
+
+  const statNumbers =
+    document.querySelectorAll(".stat-number");
+
+  let hasCounted = false;
+
+
+  function startCounters() {
+
+    statNumbers.forEach((stat) => {
+
+      const target =
+        Number(stat.getAttribute("data-target")) || 0;
+
+      const duration = 1500;
+
+      const step = Math.max(
+        1,
+        Math.floor(target / (duration / 16))
+      );
+
+      let current = 0;
+
+
+      const timer = setInterval(() => {
+
+        current += step;
+
+
+        if (current >= target) {
+
+          stat.textContent =
+            target < 10
+              ? `0${target}+`
+              : `${target}+`;
+
+          clearInterval(timer);
+
+        } else {
+
+          stat.textContent =
+            current < 10
+              ? `0${current}`
+              : `${current}`;
+
+        }
+
+      }, 16);
+
+    });
+
+  }
+
+
+  // ==========================================
+  // 6. SCROLL REVEAL OBSERVER
+  // ==========================================
+
+  const revealElements =
+    document.querySelectorAll("[data-reveal]");
+
+
+  if ("IntersectionObserver" in window) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("revealed");
+
+
+              // Trigger stats counter
+              // when stat card becomes visible
+              if (
+                entry.target.classList.contains("stat-card") &&
+                !hasCounted
+              ) {
+
+                hasCounted = true;
+
+                startCounters();
+
+              }
+
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+  } else {
+
+    // Fallback for browsers without IntersectionObserver
+    revealElements.forEach((element) => {
+      element.classList.add("revealed");
+    });
+
+  }
+
+});
+  </script>
+</body>
+</html>
